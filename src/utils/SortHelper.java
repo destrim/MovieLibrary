@@ -1,11 +1,11 @@
-package movie.order;
+package utils;
 
-import movie.representation.Movie;
+import management.movie.representation.Movie;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SortMovies {
+public class SortHelper {
     public static ArrayList<Movie> SortMoviesByTitle(ArrayList<Movie> movies) {
         int el = movies.size();
         for (int i = 0; i < el; i++) {

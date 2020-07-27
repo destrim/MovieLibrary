@@ -1,8 +1,7 @@
 package utils;
 
-import movie.representation.Movie;
+import management.movie.representation.Movie;
 import org.json.JSONObject;
-import utils.ReadInputData;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

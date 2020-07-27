@@ -1,8 +1,8 @@
-package movie.management;
+package management.movie;
 
-import movie.order.SortMovies;
+import utils.SortHelper;
 import service.OmdbWebServiceClient;
-import movie.representation.Movie;
+import management.movie.representation.Movie;
 import utils.FileHandling;
 import utils.*;
 
@@ -43,10 +43,10 @@ public class MoviesLibrary {
 
         for (Movie movie : moviesToDelete) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.representation.Movie title: ")
+                    .append("\nmovie.management.movie.representation.Movie title: ")
                     .append(movie.getTitle())
                     .append("\n")
-                    .append("movie.representation.Movie released: ")
+                    .append("movie.management.movie.Movie released: ")
                     .append(movie.getReleased())
                     .append("\n")
                     .append("Are you sure you want to delete this movie from your list?");
@@ -61,24 +61,24 @@ public class MoviesLibrary {
         }
 
         if (moviesToDelete.isEmpty())
-            System.out.println("movie.representation.Movie not found in your list.");
+            System.out.println("movie.management.movie.representation.Movie not found in your list.");
     }
 
     public void showMovies() {
         int moviecount = 1;
         for (Movie movie : movies) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.representation.Movie No.")
+                    .append("\nmovie.management.movie.Movie No.")
                     .append(moviecount)
-                    .append("\n\tmovie.representation.Movie title: ")
+                    .append("\n\tmovie.management.movie.representation.Movie title: ")
                     .append(movie.getTitle())
-                    .append("\n\tmovie.representation.Movie released: ")
+                    .append("\n\tmovie.management.movie.Movie released: ")
                     .append(movie.getReleased())
-                    .append("\n\tmovie.representation.Movie genre: ")
+                    .append("\n\tmovie.management.movie.representation.Movie genre: ")
                     .append(movie.getGenre())
-                    .append("\n\tmovie.representation.Movie plot: ")
+                    .append("\n\tmovie.management.movie.representation.Movie plot: ")
                     .append(movie.getPlot())
-                    .append("\n\tmovie.representation.Movie IMDB Rating: ")
+                    .append("\n\tmovie.management.movie.Movie IMDB Rating: ")
                     .append(movie.getImdbRating());
             System.out.println(messageToPrint.toString());
             moviecount++;
@@ -97,9 +97,9 @@ public class MoviesLibrary {
         String choice = ReadInputData.readWhatToDo();
 
         switch (choice) {
-            case "1" -> movies = SortMovies.SortMoviesByTitle(movies);
-            case "2" -> movies = SortMovies.SortMoviesByYear(movies);
-            case "3" -> movies = SortMovies.SortMoviesByRating(movies);
+            case "1" -> movies = SortHelper.SortMoviesByTitle(movies);
+            case "2" -> movies = SortHelper.SortMoviesByYear(movies);
+            case "3" -> movies = SortHelper.SortMoviesByRating(movies);
             default -> System.out.println("Incorrect number.");
         }
     }

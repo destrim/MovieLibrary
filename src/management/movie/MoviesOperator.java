@@ -1,13 +1,12 @@
-package movie.main;
+package management.movie;
 
-import movie.management.MoviesLibrary;
 import utils.ReadInputData;
 
 public class MoviesOperator {
-    public static void main(String[] args) {
+    public static void start() {
         MoviesLibrary moviesLibrary = new MoviesLibrary();
         StringBuilder messageToPrint = new StringBuilder()
-                .append("\nYour movie.representation.Movie Database\n\n")
+                .append("\nYour Movie Database\n\n")
                 .append("What do you want to do?\n")
                 .append("\t1. Add new movie to your list.\n")
                 .append("\t2. Delete movie from your list.\n")

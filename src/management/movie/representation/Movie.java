@@ -1,4 +1,4 @@
-package movie.representation;
+package management.movie.representation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
