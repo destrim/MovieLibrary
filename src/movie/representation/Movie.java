@@ -1,3 +1,5 @@
+package movie.representation;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

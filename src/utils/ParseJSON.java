@@ -1,3 +1,7 @@
+package utils;
+
+import movie.representation.Movie;
+
 import org.json.JSONObject;
 
 public class ParseJSON {

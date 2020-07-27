@@ -1,3 +1,11 @@
+package movie.management;
+
+import movie.order.SortMovies;
+import service.OmdbWebServiceClient;
+import movie.representation.Movie;
+import utils.FileHandling;
+import utils.*;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,10 +43,10 @@ public class MoviesLibrary {
 
         for (Movie movie : moviesToDelete) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nMovie title: ")
+                    .append("\nmovie.representation.Movie title: ")
                     .append(movie.getTitle())
                     .append("\n")
-                    .append("Movie released: ")
+                    .append("movie.representation.Movie released: ")
                     .append(movie.getReleased())
                     .append("\n")
                     .append("Are you sure you want to delete this movie from your list?");
@@ -53,24 +61,24 @@ public class MoviesLibrary {
         }
 
         if (moviesToDelete.isEmpty())
-            System.out.println("Movie not found in your list.");
+            System.out.println("movie.representation.Movie not found in your list.");
     }
 
     public void showMovies() {
         int moviecount = 1;
         for (Movie movie : movies) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nMovie No.")
+                    .append("\nmovie.representation.Movie No.")
                     .append(moviecount)
-                    .append("\n\tMovie title: ")
+                    .append("\n\tmovie.representation.Movie title: ")
                     .append(movie.getTitle())
-                    .append("\n\tMovie released: ")
+                    .append("\n\tmovie.representation.Movie released: ")
                     .append(movie.getReleased())
-                    .append("\n\tMovie genre: ")
+                    .append("\n\tmovie.representation.Movie genre: ")
                     .append(movie.getGenre())
-                    .append("\n\tMovie plot: ")
+                    .append("\n\tmovie.representation.Movie plot: ")
                     .append(movie.getPlot())
-                    .append("\n\tMovie IMDB Rating: ")
+                    .append("\n\tmovie.representation.Movie IMDB Rating: ")
                     .append(movie.getImdbRating());
             System.out.println(messageToPrint.toString());
             moviecount++;

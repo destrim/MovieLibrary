@@ -1,3 +1,7 @@
+package utils;
+
+import movie.representation.Movie;
+
 import java.util.Scanner;
 
 public class ReadInputData {
@@ -25,10 +29,10 @@ public class ReadInputData {
     public static Movie readMovieAndYear() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Movie title: ");
+        System.out.print("movie.representation.Movie title: ");
         String title = scanner.nextLine();
 
-        System.out.print("Movie year: ");
+        System.out.print("movie.representation.Movie year: ");
         String year = scanner.nextLine();
 
         return new Movie(

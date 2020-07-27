@@ -1,3 +1,7 @@
+package movie.order;
+
+import movie.representation.Movie;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
