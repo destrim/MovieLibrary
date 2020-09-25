@@ -1,6 +1,6 @@
-package management.movie;
+package com.destrim.movie;
 
-import utils.ReadInputData;
+import com.destrim.utils.ReadInputData;
 
 public class MoviesOperator {
     public static void start() {

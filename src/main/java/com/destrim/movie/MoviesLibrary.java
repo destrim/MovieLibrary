@@ -1,10 +1,10 @@
-package management.movie;
+package com.destrim.movie;
 
-import utils.SortHelper;
-import service.OmdbWebServiceClient;
-import management.movie.representation.Movie;
-import utils.FileHandling;
-import utils.*;
+import com.destrim.utils.SortHelper;
+import com.destrim.service.OmdbWebServiceClient;
+import com.destrim.movie.representation.Movie;
+import com.destrim.utils.FileHandling;
+import com.destrim.utils.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,10 +43,10 @@ public class MoviesLibrary {
 
         for (Movie movie : moviesToDelete) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.management.movie.representation.Movie title: ")
+                    .append("\nmovie.com.destrim.movie.representation.Movie title: ")
                     .append(movie.getTitle())
                     .append("\n")
-                    .append("movie.management.movie.Movie released: ")
+                    .append("movie.com.destrim.movie.Movie released: ")
                     .append(movie.getReleased())
                     .append("\n")
                     .append("Are you sure you want to delete this movie from your list?");
@@ -61,24 +61,24 @@ public class MoviesLibrary {
         }
 
         if (moviesToDelete.isEmpty())
-            System.out.println("movie.management.movie.representation.Movie not found in your list.");
+            System.out.println("movie.com.destrim.movie.representation.Movie not found in your list.");
     }
 
     public void showMovies() {
         int moviecount = 1;
         for (Movie movie : movies) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.management.movie.Movie No.")
+                    .append("\nmovie.com.destrim.movie.Movie No.")
                     .append(moviecount)
-                    .append("\n\tmovie.management.movie.representation.Movie title: ")
+                    .append("\n\tmovie.com.destrim.movie.representation.Movie title: ")
                     .append(movie.getTitle())
-                    .append("\n\tmovie.management.movie.Movie released: ")
+                    .append("\n\tmovie.com.destrim.movie.Movie released: ")
                     .append(movie.getReleased())
-                    .append("\n\tmovie.management.movie.representation.Movie genre: ")
+                    .append("\n\tmovie.com.destrim.movie.representation.Movie genre: ")
                     .append(movie.getGenre())
-                    .append("\n\tmovie.management.movie.representation.Movie plot: ")
+                    .append("\n\tmovie.com.destrim.movie.representation.Movie plot: ")
                     .append(movie.getPlot())
-                    .append("\n\tmovie.management.movie.Movie IMDB Rating: ")
+                    .append("\n\tmovie.com.destrim.movie.Movie IMDB Rating: ")
                     .append(movie.getImdbRating());
             System.out.println(messageToPrint.toString());
             moviecount++;

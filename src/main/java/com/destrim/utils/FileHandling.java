@@ -1,6 +1,6 @@
-package utils;
+package com.destrim.utils;
 
-import management.movie.representation.Movie;
+import com.destrim.movie.representation.Movie;
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;

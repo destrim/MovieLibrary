@@ -1,4 +1,4 @@
-package service;
+package com.destrim.service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
