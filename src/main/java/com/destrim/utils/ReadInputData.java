@@ -29,10 +29,10 @@ public class ReadInputData {
     public static Movie readMovieAndYear() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("movie.com.destrim.movie.representation.Movie title: ");
+        System.out.print("Movie title: ");
         String title = scanner.nextLine();
 
-        System.out.print("movie.com.destrim.movie.representation.Movie year: ");
+        System.out.print("Movie year: ");
         String year = scanner.nextLine();
 
         return new Movie(

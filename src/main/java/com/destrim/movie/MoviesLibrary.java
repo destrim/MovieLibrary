@@ -43,10 +43,10 @@ public class MoviesLibrary {
 
         for (Movie movie : moviesToDelete) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.com.destrim.movie.representation.Movie title: ")
+                    .append("\nMovie title: ")
                     .append(movie.getTitle())
                     .append("\n")
-                    .append("movie.com.destrim.movie.Movie released: ")
+                    .append("Movie released: ")
                     .append(movie.getReleased())
                     .append("\n")
                     .append("Are you sure you want to delete this movie from your list?");
@@ -61,24 +61,24 @@ public class MoviesLibrary {
         }
 
         if (moviesToDelete.isEmpty())
-            System.out.println("movie.com.destrim.movie.representation.Movie not found in your list.");
+            System.out.println("Movie not found in your list.");
     }
 
     public void showMovies() {
         int moviecount = 1;
         for (Movie movie : movies) {
             StringBuilder messageToPrint = new StringBuilder()
-                    .append("\nmovie.com.destrim.movie.Movie No.")
+                    .append("\nMovie No.")
                     .append(moviecount)
-                    .append("\n\tmovie.com.destrim.movie.representation.Movie title: ")
+                    .append("\n\tMovie title: ")
                     .append(movie.getTitle())
-                    .append("\n\tmovie.com.destrim.movie.Movie released: ")
+                    .append("\n\tMovie released: ")
                     .append(movie.getReleased())
-                    .append("\n\tmovie.com.destrim.movie.representation.Movie genre: ")
+                    .append("\n\tMovie genre: ")
                     .append(movie.getGenre())
-                    .append("\n\tmovie.com.destrim.movie.representation.Movie plot: ")
+                    .append("\n\tMovie plot: ")
                     .append(movie.getPlot())
-                    .append("\n\tmovie.com.destrim.movie.Movie IMDB Rating: ")
+                    .append("\n\tMovie IMDB Rating: ")
                     .append(movie.getImdbRating());
             System.out.println(messageToPrint.toString());
             moviecount++;

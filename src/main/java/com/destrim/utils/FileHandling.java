@@ -67,4 +67,15 @@ public class FileHandling {
             movies.add(movie);
         }
     }
+
+    public static String importApikey() {
+        Path path = Path.of("src/main/java/com/destrim/utils/apikey");
+
+        try {
+            return Files.readString(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
