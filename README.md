@@ -2,7 +2,7 @@
 
 Movie Library in Java for managing your watched movies.
 
-### Inctroduction
+### Introduction
 
 Project goal is to create and manage your own movie library witch watched movies.
 It is written in _Java_ programming language and made in _IntelliJ IDEA_ IDE.
