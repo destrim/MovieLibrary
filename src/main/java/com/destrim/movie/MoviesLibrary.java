@@ -20,7 +20,7 @@ public class MoviesLibrary {
     public void searchForMovie() {
         Movie searchForMovie = ReadInputData.readMovieAndYear();
 
-        String jsonFromApi = OmdbWebServiceClient.searchMovieByTitleYear(searchForMovie.getTitle(),searchForMovie.getReleased());
+        String jsonFromApi = OmdbWebServiceClient.searchMovieByTitleYear(searchForMovie.getTitle(), searchForMovie.getReleased());
 
         Movie movie = ParseJSON.parse(jsonFromApi);
 
