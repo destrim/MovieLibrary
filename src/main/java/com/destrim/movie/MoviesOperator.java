@@ -17,7 +17,8 @@ public class MoviesOperator {
                 .append("\t0. Quit program.\n")
                 .append("\n");
 
-        loop: while (true) {
+        loop:
+        while (true) {
             System.out.print(messageToPrint.toString());
             String whatToDo = ReadInputData.readWhatToDo();
 
