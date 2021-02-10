@@ -10,8 +10,9 @@ The movie database is available by connection with the _OMDb API_.
 
 #### Tasks list
 
-- [ ] add database to the project instead of JSON file (15.01)
-- [ ] change usage of JSON file to additional functionality eg. importing other database or exporting it to another program (17.01)
+- [ ] add database to the project instead of JSON file
+- [ ] change all functionalities from using JSON file to operating on database
+- [ ] change usage of JSON file to additional functionality eg. importing other database or exporting it to another program
 - [ ] change "choosing number" system to proper command system
 - [ ] add command list and their description to README file
 - [ ] add usage of the program to README file
