@@ -1,5 +1,6 @@
 package com.destrim.movie;
 
+import com.destrim.persistance.MovieRepository;
 import com.destrim.utils.SortHelper;
 import com.destrim.service.OmdbWebServiceClient;
 import com.destrim.movie.representation.Movie;
@@ -10,11 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MoviesLibrary {
-    public ArrayList<Movie> movies;
+public class MoviesService {
 
-    public MoviesLibrary() {
-        this.movies = new ArrayList<Movie>();
+    private ArrayList<Movie> movies;
+    private final MovieRepository movieRepository;
+
+    public MoviesService() {
+        this.movieRepository = new MovieRepository();
+        this.movies = new ArrayList<>();
     }
 
     public void searchForMovie() {
@@ -28,7 +32,7 @@ public class MoviesLibrary {
     }
 
     public void deleteMovie() {
-        ArrayList<Movie> moviesToDelete = new ArrayList<Movie>();
+        ArrayList<Movie> moviesToDelete = new ArrayList<>();
 
         Movie deleteMovie = ReadInputData.readMovieAndYear();
 
@@ -105,14 +109,20 @@ public class MoviesLibrary {
     }
 
     public void saveMovies() {
+
+        movieRepository.save(movies);
+
+    }
+
+    public void exportMoviesToJSON() {
         try {
             FileHandling.saveToFile(movies);
         } catch (FileNotFoundException e) {
-            System.out.println("Cannot save movies to file.");
+            e.printStackTrace();
         }
     }
 
-    public void importMovies() {
+    public void importMoviesfromJSON() {
         try {
             FileHandling.importFromFile(movies);
         } catch (IOException e) {

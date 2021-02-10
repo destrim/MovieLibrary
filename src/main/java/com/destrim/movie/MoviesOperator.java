@@ -4,7 +4,7 @@ import com.destrim.utils.ReadInputData;
 
 public class MoviesOperator {
     public static void start() {
-        MoviesLibrary moviesLibrary = new MoviesLibrary();
+        MoviesService moviesService = new MoviesService();
         StringBuilder messageToPrint = new StringBuilder()
                 .append("\nYour Movie Database\n\n")
                 .append("What do you want to do?\n")
@@ -14,6 +14,7 @@ public class MoviesOperator {
                 .append("\t4. Sort your list.\n")
                 .append("\t5. Save your list to JSON file.\n")
                 .append("\t6. Import your list from JSON file.\n")
+                .append("\t7. Save movies to database.\n")
                 .append("\t0. Quit program.\n")
                 .append("\n");
 
@@ -24,22 +25,25 @@ public class MoviesOperator {
 
             switch (whatToDo) {
                 case "1":
-                    moviesLibrary.searchForMovie();
+                    moviesService.searchForMovie();
                     break;
                 case "2":
-                    moviesLibrary.deleteMovie();
+                    moviesService.deleteMovie();
                     break;
                 case "3":
-                    moviesLibrary.showMovies();
+                    moviesService.showMovies();
                     break;
                 case "4":
-                    moviesLibrary.sortMovies();
+                    moviesService.sortMovies();
                     break;
                 case "5":
-                    moviesLibrary.saveMovies();
+                    moviesService.exportMoviesToJSON();
                     break;
                 case "6":
-                    moviesLibrary.importMovies();
+                    moviesService.importMoviesfromJSON();
+                    break;
+                case "7":
+                    moviesService.saveMovies();
                     break;
                 case "0":
                     break loop;
