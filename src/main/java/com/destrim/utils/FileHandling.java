@@ -10,10 +10,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FileHandling {
-    public static void saveToFile(ArrayList<Movie> movies) throws FileNotFoundException {
+    public static void saveToFile(List<Movie> movies, String fileName) throws FileNotFoundException {
         JSONObject obj = new JSONObject();
         int i = 1;
         for (Movie movie : movies) {
@@ -28,15 +29,14 @@ public class FileHandling {
             i++;
         }
 
-        String fileName = ReadInputData.readFileName();
         PrintWriter pw = new PrintWriter(fileName + ".json");
         pw.write(obj.toString());
         pw.flush();
         pw.close();
     }
 
-    public static void importFromFile(ArrayList<Movie> movies) throws IOException {
-        String fileName = ReadInputData.readFileName();
+    public static ArrayList<Movie> importFromFile(String fileName) throws IOException {
+        ArrayList<Movie> movies = new ArrayList<>();
 
         Path path = Path.of(fileName + ".json");
         String jsonFromFile = Files.readString(path);
@@ -66,6 +66,7 @@ public class FileHandling {
 
             movies.add(movie);
         }
+        return movies;
     }
 
     public static String importApikey() {

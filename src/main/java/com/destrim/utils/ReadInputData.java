@@ -5,11 +5,11 @@ import com.destrim.movie.representation.Movie;
 import java.util.Scanner;
 
 public class ReadInputData {
-    public static String readWhatToDo() {
+    public static String readCommand() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Choose number from the list: ");
-        return scanner.next();
+        System.out.print("Write your command: ");
+        return scanner.nextLine();
     }
 
     public static char readYesOrNo() {
@@ -17,6 +17,13 @@ public class ReadInputData {
 
         System.out.print("(y/n): ");
         return scanner.next().charAt(0);
+    }
+
+    public static String readWhatToDo() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Choose number from the list: ");
+        return scanner.next();
     }
 
     public static String readFileName() {
@@ -42,5 +49,12 @@ public class ReadInputData {
                 "",
                 ""
         );
+    }
+
+    public static long readID() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Movie id: ");
+        return scanner.nextLong();
     }
 }
