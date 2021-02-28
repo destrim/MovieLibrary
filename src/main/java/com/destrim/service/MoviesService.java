@@ -47,6 +47,6 @@ public class MoviesService {
 
     public void exportMoviesToJSON(String fileName) throws IOException {
         List<Movie> movies = movieRepository.getAll();
-        FileHandling.ExportToFile(movies, fileName);
+        FileHandling.exportToFile(movies, fileName);
     }
 }

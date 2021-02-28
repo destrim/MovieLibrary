@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class FileHandling {
-    public static void ExportToFile(List<Movie> movies, String fileName) throws IOException {
+    public static void exportToFile(List<Movie> movies, String fileName) throws IOException {
         JSONObject obj = new JSONObject();
         int i = 1;
         for (Movie movie : movies) {

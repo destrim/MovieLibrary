@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ImportExportCommandTest {
+class FileCommandTest {
 
     @Test
     public void ifArgCorrect_ShouldParseCommand() {
@@ -13,10 +13,10 @@ class ImportExportCommandTest {
         String command = "import -f movieDatabase";
 
         /* When */
-        ImportExportCommand importExportCommand = ImportExportCommand.fromInput(command);
+        FileCommand fileCommand = FileCommand.fromInput(command);
 
         /* Then */
-        assertEquals("movieDatabase", importExportCommand.getFileName());
+        assertEquals("movieDatabase", fileCommand.getFileName());
     }
 
     @Test

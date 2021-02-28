@@ -5,15 +5,15 @@ import lombok.Data;
 import java.util.Arrays;
 
 @Data
-public class ImportExportCommand {
+public class FileCommand {
 
     private String fileName;
 
-    public static ImportExportCommand fromInput(String command) {
-        return new ImportExportCommand(command);
+    public static FileCommand fromInput(String command) {
+        return new FileCommand(command);
     }
 
-    private ImportExportCommand(String command) {
+    private FileCommand(String command) {
         this.parse(command);
     }
 
