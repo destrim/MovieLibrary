@@ -1,7 +1,6 @@
-package com.destrim.utils;
+package com.destrim.util;
 
-import com.destrim.movie.representation.Movie;
-
+import com.destrim.model.Movie;
 import java.util.ArrayList;
 import java.util.Collections;
 

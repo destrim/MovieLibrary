@@ -1,9 +1,14 @@
 package com.destrim;
 
-import com.destrim.movie.MoviesOperator;
+import com.destrim.exception.BadApikeyException;
+import com.destrim.service.CommandService;
 
 public class Main {
     public static void main(String[] args) {
-        MoviesOperator.start();
+        try {
+            new CommandService().start();
+        } catch (BadApikeyException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
