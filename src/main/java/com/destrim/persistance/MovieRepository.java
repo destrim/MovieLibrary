@@ -1,11 +1,10 @@
 package com.destrim.persistance;
 
-import com.destrim.movie.representation.Movie;
+import com.destrim.model.Movie;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRepository {
@@ -26,18 +25,17 @@ public class MovieRepository {
         session.close();
     }
 
-    public void delete(long id) {
+    public void delete(Movie movie) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        Movie movie = session.get(Movie.class, id);
         session.delete(movie);
 
         tx.commit();
         session.close();
     }
 
-    public Movie getById(long id) {
+    public Movie get(long id) {
         Movie movie;
 
         Session session = sessionFactory.openSession();
@@ -57,6 +55,7 @@ public class MovieRepository {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
+        // TODO fix warning
         movies = session.createQuery("from Movie").list();
 
         tx.commit();

@@ -1,6 +1,6 @@
-package com.destrim.utils;
+package com.destrim.util;
 
-import com.destrim.movie.representation.Movie;
+import com.destrim.model.Movie;
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
@@ -8,17 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FileHandling {
     public static void saveToFile(List<Movie> movies, String fileName) throws FileNotFoundException {
         JSONObject obj = new JSONObject();
         int i = 1;
         for (Movie movie : movies) {
-            Map m = new LinkedHashMap(5);
+            Map<String, String> m = new LinkedHashMap<>(5);
             m.put("Title", movie.getTitle());
             m.put("Released", movie.getReleased());
             m.put("Genre", movie.getGenre());
@@ -30,7 +27,7 @@ public class FileHandling {
         }
 
         PrintWriter pw = new PrintWriter(fileName + ".json");
-        pw.write(obj.toString());
+        pw.write(obj.toString());  // TODO json formatting
         pw.flush();
         pw.close();
     }
@@ -55,13 +52,14 @@ public class FileHandling {
         for (int i = 1; i <= count; i++) {
             JSONObject obj = new JSONObject(jsonFromFile);
             String countMovies = Integer.toString(i);
+            obj = obj.getJSONObject(findStr + countMovies);
 
             Movie movie = new Movie(
-                    obj.getJSONObject(findStr + countMovies).getString("Title"),
-                    obj.getJSONObject(findStr + countMovies).getString("Released"),
-                    obj.getJSONObject(findStr + countMovies).getString("Genre"),
-                    obj.getJSONObject(findStr + countMovies).getString("Plot"),
-                    obj.getJSONObject(findStr + countMovies).getString("imdbRating")
+                    obj.getString("Title"),
+                    obj.getString("Released"),
+                    obj.getString("Genre"),
+                    obj.getString("Plot"),
+                    obj.getString("imdbRating")
             );
 
             movies.add(movie);
@@ -69,14 +67,13 @@ public class FileHandling {
         return movies;
     }
 
-    public static String importApikey() {
-        Path path = Path.of("src/main/java/com/destrim/utils/apikey");
+    public static Optional<String> importApikey() {
+        Path path = Path.of("src/main/resources/apikey");
 
         try {
-            return Files.readString(path);
+            return Optional.of(Files.readString(path));
         } catch (IOException e) {
-            e.printStackTrace();
-            return null;
+            return Optional.empty();
         }
     }
 }

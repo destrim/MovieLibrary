@@ -9,6 +9,6 @@
         <property name = "hibernate.connection.username">libraryadmin</property>
         <property name = "hibernate.connection.password">password</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <mapping class = "com.destrim.movie.representation.Movie"/>
+        <mapping class = "com.destrim.model.Movie"/>
     </session-factory>
 </hibernate-configuration>

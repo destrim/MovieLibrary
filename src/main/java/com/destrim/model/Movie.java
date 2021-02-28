@@ -1,4 +1,4 @@
-package com.destrim.movie.representation;
+package com.destrim.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
