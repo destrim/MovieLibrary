@@ -3,7 +3,6 @@ package com.destrim.util;
 import com.destrim.model.Movie;
 import org.json.JSONObject;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -11,7 +10,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class FileHandling {
-    public static void saveToFile(List<Movie> movies, String fileName) throws FileNotFoundException {
+    public static void ExportToFile(List<Movie> movies, String fileName) throws IOException {
         JSONObject obj = new JSONObject();
         int i = 1;
         for (Movie movie : movies) {

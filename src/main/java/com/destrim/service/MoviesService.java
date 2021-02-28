@@ -7,7 +7,6 @@ import com.destrim.model.Movie;
 import com.destrim.persistance.MovieRepository;
 import com.destrim.util.FileHandling;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -46,19 +45,8 @@ public class MoviesService {
         movieRepository.addAll(movies);
     }
 
-    // TODO function refactor
-    public void exportMoviesToJSON(String[] command) {
-        String[] arg = command[1].split(" ");
-
-        if (arg[0].equalsIgnoreCase("f") && arg.length > 1) {
-            List<Movie> movies = movieRepository.getAll();
-            String fileName = arg[1];
-
-            try {
-                FileHandling.saveToFile(movies, fileName);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+    public void exportMoviesToJSON(String fileName) throws IOException {
+        List<Movie> movies = movieRepository.getAll();
+        FileHandling.ExportToFile(movies, fileName);
     }
 }

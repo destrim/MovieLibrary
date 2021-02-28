@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.Arrays;
 
+// TODO inheritance in all command package
 @Data
 public class AddCommand {
 

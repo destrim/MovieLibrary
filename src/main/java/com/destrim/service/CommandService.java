@@ -6,7 +6,7 @@ import com.destrim.exception.OmdbConnectionProblem;
 import com.destrim.model.Movie;
 import com.destrim.model.command.AddCommand;
 import com.destrim.model.command.DeleteCommand;
-import com.destrim.model.command.ImportCommand;
+import com.destrim.model.command.ImportExportCommand;
 
 import java.io.IOException;
 import java.util.List;
@@ -79,17 +79,23 @@ public class CommandService {
     }
 
     private void handleImport(String input) {
-        ImportCommand importCommand = ImportCommand.fromInput(input);
+        ImportExportCommand importExportCommand = ImportExportCommand.fromInput(input);
 
         try {
-            moviesService.importMoviesFromJSON(importCommand.getFileName());
+            moviesService.importMoviesFromJSON(importExportCommand.getFileName());
         } catch (IOException e) {
             ioService.printFileNotFoundMessage();
         }
     }
 
     private void handleExport(String input) {
+        ImportExportCommand importExportCommand = ImportExportCommand.fromInput(input);
 
+        try {
+            moviesService.exportMoviesToJSON(importExportCommand.getFileName());
+        } catch (IOException e) {
+            ioService.printFileNotFoundMessage();
+        }
     }
 
     private String parseInput(String input) {
