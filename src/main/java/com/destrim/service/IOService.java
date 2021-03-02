@@ -15,7 +15,7 @@ public class IOService {
             .append("\tsort -p t/y/r = Sort your list by title t, released year y or IMDB rating r.\n")
             .append("\texport -f filename = Save your movies to JSON file.\n")
             .append("\timport -f filename = Import your list from JSON file.\n")
-            .append("\tquit = Quit program.\n")
+            .append("\tquit = Quit program.")
             .toString();
 
     public boolean askIfMovieToAddIsCorrect(Movie movie) {
@@ -60,7 +60,7 @@ public class IOService {
     public String readInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Write your command: ");
+        System.out.print("\nWrite your command: ");
         return scanner.nextLine();
     }
 

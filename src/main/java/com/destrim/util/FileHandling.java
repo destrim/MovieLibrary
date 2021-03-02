@@ -1,30 +1,36 @@
 package com.destrim.util;
 
 import com.destrim.model.Movie;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 public class FileHandling {
 
-    public static void exportToFile(List<Movie> movies, String fileName) throws IOException {
-        JSONArray arr = getJsonArrayFromMovies(movies);
-        saveJsonArrayToFile(fileName, arr);
+    private static final String pathString = "src/main/resources/apikey";
+    private static final String jsonFormat = ".json";
+
+    public void exportToFile(List<Movie> movies, String fileName) throws IOException {
+        String json = getJsonFromMovies(movies);
+        saveJsonToFile(fileName, json);
     }
 
-    public static List<Movie> importFromFile(String fileName) throws IOException {
-        JSONArray arr = parseJsonArrayFromFile(fileName);
-        return getMoviesFromJsonArray(arr);
+    public List<Movie> importFromFile(String fileName) throws IOException {
+        String json = parseJsonFromFile(fileName);
+        return getMoviesFromJson(json);
     }
 
     public static Optional<String> importApikey() {
-        Path path = Path.of("src/main/resources/apikey");
+        Path path = Path.of(pathString);
 
         try {
             return Optional.of(Files.readString(path));
@@ -33,58 +39,29 @@ public class FileHandling {
         }
     }
 
-    private static JSONArray getJsonArrayFromMovies(List<Movie> movies) {
-        JSONArray arr = new JSONArray();
-
-        for (Movie movie : movies) {
-            JSONObject obj = getJsonObjectFromMovie(movie);
-            arr.put(obj);
-        }
-        return arr;
+    private String getJsonFromMovies(List<Movie> movies) {
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+        return gson.toJson(movies);
     }
 
-    private static void saveJsonArrayToFile(String fileName, JSONArray arr) throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(fileName + ".json");
-        pw.write(arr.toString(3));
+    private void saveJsonToFile(String fileName, String json) throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter(fileName + jsonFormat);
+        pw.write(json);
         pw.flush();
         pw.close();
     }
 
-    private static JSONArray parseJsonArrayFromFile(String fileName) throws IOException {
-        Path path = Path.of(fileName + ".json");
-        String jsonFromFile = Files.readString(path);
-        return new JSONArray(jsonFromFile);
+    private String parseJsonFromFile(String fileName) throws IOException {
+        Path path = Path.of(fileName + jsonFormat);
+        return Files.readString(path);
     }
 
-    private static List<Movie> getMoviesFromJsonArray(JSONArray arr) {
-        List<Movie> movies = new ArrayList<>();
+    private List<Movie> getMoviesFromJson(String json) {
+        Gson gson = new Gson();
 
-        for (int i = 0; i < arr.length(); i++) {
-            Movie movie = getMovieFromJsonObject(arr, i);
-            movies.add(movie);
-        }
-        return movies;
-    }
+        Type movieListType = new TypeToken<List<Movie>>() {
+        }.getType();
 
-    private static JSONObject getJsonObjectFromMovie(Movie movie) {
-        Map<String, String> m = new HashMap<>(5);
-        m.put("Title", movie.getTitle());
-        m.put("Released", movie.getReleased());
-        m.put("Genre", movie.getGenre());
-        m.put("Plot", movie.getPlot());
-        m.put("imdbRating", movie.getImdbRating());
-        return new JSONObject(m);
-    }
-
-    private static Movie getMovieFromJsonObject(JSONArray arr, int i) {
-        JSONObject obj = arr.getJSONObject(i);
-
-        return new Movie(
-                obj.getString("Title"),
-                obj.getString("Released"),
-                obj.getString("Genre"),
-                obj.getString("Plot"),
-                obj.getString("imdbRating")
-        );
+        return gson.fromJson(json, movieListType);
     }
 }

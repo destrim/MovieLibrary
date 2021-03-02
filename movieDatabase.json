@@ -1,37 +1,9 @@
 [
-   {
-      "Title": "Batman",
-      "imdbRating": "7.5",
-      "Released": "1989",
-      "Genre": "Action, Adventure",
-      "Plot": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker."
-   },
-   {
-      "Title": "Gladiator",
-      "imdbRating": "8.5",
-      "Released": "2000",
-      "Genre": "Action, Adventure, Drama",
-      "Plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery."
-   },
-   {
-      "Title": "Iron Man",
-      "imdbRating": "7.9",
-      "Released": "2008",
-      "Genre": "Action, Adventure, Sci-Fi",
-      "Plot": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil."
-   },
-   {
-      "Title": "Iron Man 2",
-      "imdbRating": "7.0",
-      "Released": "2010",
-      "Genre": "Action, Adventure, Sci-Fi",
-      "Plot": "With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy."
-   },
-   {
-      "Title": "Shrek 2",
-      "imdbRating": "7.2",
-      "Released": "2004",
-      "Genre": "Animation, Adventure, Comedy, Family, Fantasy, Romance",
-      "Plot": "Shrek and Fiona travel to the Kingdom of Far Far Away, where Fiona's parents are King and Queen, to celebrate their marriage. When they arrive, they find they are not as welcome as they thought they would be."
-   }
+  {
+    "title": "Batman",
+    "released": "1989",
+    "genre": "Action, Adventure",
+    "plot": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker.",
+    "imdbRating": "7.5"
+  }
 ]

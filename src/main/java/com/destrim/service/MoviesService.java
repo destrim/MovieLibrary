@@ -14,10 +14,12 @@ public class MoviesService {
 
     private final MovieRepository movieRepository;
     private final OmdbWebServiceClient omdbWebServiceClient;
+    private final FileHandling fileHandling;
 
     public MoviesService() throws BadApikeyException {
         this.movieRepository = new MovieRepository();
         this.omdbWebServiceClient = new OmdbWebServiceClient();
+        this.fileHandling = new FileHandling();
     }
 
     public List<Movie> getMovies() {
@@ -41,12 +43,12 @@ public class MoviesService {
     }
 
     public void importMoviesFromJSON(String fileName) throws IOException {
-        List<Movie> movies = FileHandling.importFromFile(fileName);
+        List<Movie> movies = fileHandling.importFromFile(fileName);
         movieRepository.addAll(movies);
     }
 
     public void exportMoviesToJSON(String fileName) throws IOException {
         List<Movie> movies = movieRepository.getAll();
-        FileHandling.exportToFile(movies, fileName);
+        fileHandling.exportToFile(movies, fileName);
     }
 }
