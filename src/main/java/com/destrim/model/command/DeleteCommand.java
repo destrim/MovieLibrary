@@ -1,11 +1,13 @@
 package com.destrim.model.command;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Arrays;
 
-@Data
-public class DeleteCommand {
+@Getter
+@Setter
+public class DeleteCommand extends Command {
 
     private long id;
 
@@ -17,20 +19,7 @@ public class DeleteCommand {
         this.parse(command);
     }
 
-    private void parse(String command) {
-        String[] arguments = extractArgs(command);
-
-        for (String argument : arguments) {
-            parseArg(argument);
-        }
-    }
-
-    private String[] extractArgs(String command) {
-        String[] commandParts = command.split("-");
-        return Arrays.copyOfRange(commandParts, 1, commandParts.length);
-    }
-
-    private void parseArg(String argument) {
+    void parseArg(String argument) {
         String param = extractParam(argument);
 
         if (isParamId(param)) {
@@ -38,11 +27,6 @@ public class DeleteCommand {
         } else {
             throw new IllegalArgumentException("Wrong argument.");
         }
-    }
-
-    private String extractParam(String argument) {
-        String[] argParts = argument.split(" ");
-        return argParts[0];
     }
 
     private boolean isParamId(String param) {

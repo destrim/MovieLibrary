@@ -5,5 +5,19 @@
     "genre": "Action, Adventure",
     "plot": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being Jack Napier, a criminal who becomes the clownishly homicidal Joker.",
     "imdbRating": "7.5"
+  },
+  {
+    "title": "Gladiator",
+    "released": "2000",
+    "genre": "Action, Adventure, Drama",
+    "plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "imdbRating": "8.5"
+  },
+  {
+    "title": "Drive",
+    "released": "2011",
+    "genre": "Crime, Drama",
+    "plot": "A mysterious Hollywood stuntman and mechanic moonlights as a getaway driver and finds himself in trouble when he helps out his neighbor.",
+    "imdbRating": "7.8"
   }
 ]

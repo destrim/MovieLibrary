@@ -1,14 +1,15 @@
 package com.destrim.model.command;
 
 import com.destrim.util.VariousUtils;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Arrays;
 
-// TODO inheritance in all command package
-@Data
-public class AddCommand {
+@Getter
+@Setter
+public class AddCommand extends Command {
 
     private String title;
     private String year;
@@ -21,15 +22,8 @@ public class AddCommand {
         this.parse(command);
     }
 
-    private void parse(String command) {
-        String[] arguments = extractArgs(command);
-
-        for (String argument : arguments) {
-            parseArg(argument);
-        }
-    }
-
-    private String[] extractArgs(String command) {
+    @Override
+    String[] extractArgs(String command) {
         int count = StringUtils.countMatches(command, "\"");
         if (count % 2 == 1) {
             throw new IllegalArgumentException("Wrong quotes.");
@@ -39,7 +33,7 @@ public class AddCommand {
         return Arrays.copyOfRange(commandParts, 1, commandParts.length);
     }
 
-    private void parseArg(String argument) {
+    void parseArg(String argument) {
         String param = extractParam(argument);
 
         if (isParamTitle(param)) {
@@ -49,11 +43,6 @@ public class AddCommand {
         } else {
             throw new IllegalArgumentException("Wrong argument.");
         }
-    }
-
-    private String extractParam(String argument) {
-        String[] argParts = argument.split(" ");
-        return argParts[0];
     }
 
     private boolean isParamTitle(String param) {
