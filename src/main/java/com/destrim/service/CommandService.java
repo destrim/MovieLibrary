@@ -4,6 +4,7 @@ import com.destrim.exception.BadApikeyException;
 import com.destrim.exception.MovieInOmdbNotFound;
 import com.destrim.exception.OmdbConnectionProblem;
 import com.destrim.model.Movie;
+import com.destrim.model.MovieDTO;
 import com.destrim.model.command.AddCommand;
 import com.destrim.model.command.DeleteCommand;
 import com.destrim.model.command.FileCommand;
@@ -52,11 +53,11 @@ public class CommandService {
     private void handleAdd(String input) {
         AddCommand addCommand = AddCommand.fromInput(input);
         try {
-            Movie movie = moviesService.fetchMovieData(addCommand.getTitle(), addCommand.getYear());
-            boolean userAccept = ioService.askIfMovieToAddIsCorrect(movie);
+            MovieDTO movieDTO = moviesService.fetchMovieData(addCommand.getTitle(), addCommand.getYear());
+            boolean userAccept = ioService.askIfMovieToAddIsCorrect(movieDTO);
 
             if (userAccept) {
-                moviesService.addMovie(movie);
+                moviesService.addMovie(movieDTO);
             }
         } catch (MovieInOmdbNotFound | OmdbConnectionProblem e) {
             ioService.printExceptionMessage(e);

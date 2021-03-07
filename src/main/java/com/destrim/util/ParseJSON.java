@@ -1,13 +1,12 @@
 package com.destrim.util;
 
-import com.destrim.model.Movie;
-
+import com.destrim.model.MovieDTO;
 import org.json.JSONObject;
 
 public class ParseJSON {
-    public static Movie parse(String response) {
+    public static MovieDTO parse(String response) {
         JSONObject obj = new JSONObject(response);
-        return new Movie(
+        return new MovieDTO(
                 obj.getString("Title"),
                 obj.getString("Year"),
                 obj.getString("Genre"),

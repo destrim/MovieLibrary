@@ -4,6 +4,7 @@ import com.destrim.exception.BadApikeyException;
 import com.destrim.exception.MovieInOmdbNotFound;
 import com.destrim.exception.OmdbConnectionProblem;
 import com.destrim.model.Movie;
+import com.destrim.model.MovieDTO;
 import com.destrim.util.FileHandling;
 import com.destrim.util.ParseJSON;
 
@@ -24,7 +25,7 @@ public class OmdbWebServiceClient {
     }
 
     // TODO Optional instead of MovieInOmdbNotFound Exception
-    public Movie searchMovieByTitleYear(String title, String year) throws MovieInOmdbNotFound, OmdbConnectionProblem {
+    public MovieDTO searchMovieByTitleYear(String title, String year) throws MovieInOmdbNotFound, OmdbConnectionProblem {
         title = URLEncoder.encode(title, StandardCharsets.UTF_8);
 
         String requestUrl = SEARCH_URL

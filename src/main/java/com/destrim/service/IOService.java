@@ -1,6 +1,7 @@
 package com.destrim.service;
 
 import com.destrim.model.Movie;
+import com.destrim.model.MovieDTO;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,12 +16,12 @@ public class IOService {
             .append("\tsort -p t/y/r = Sort your list by title t, released year y or IMDB rating r.\n")
             .append("\texport -f filename = Save your movies to JSON file.\n")
             .append("\timport -f filename = Import your list from JSON file.\n")
-            .append("\tquit = Quit program.")
+            .append("\tquit = Quit program.\n")
             .toString();
 
-    public boolean askIfMovieToAddIsCorrect(Movie movie) {
+    public boolean askIfMovieToAddIsCorrect(MovieDTO movieDTO) {
         System.out.println("\nAre you sure you want to add movie:");
-        printMovie(movie);
+        printMovie(movieDTO);
         System.out.println("\nto your database?\n");
 
         return askIfUserAccepts();
@@ -60,28 +61,28 @@ public class IOService {
     public String readInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("\nWrite your command: ");
+        System.out.println("Write your command: ");
         return scanner.nextLine();
     }
 
-    private void printMovieWithId(Movie movie) {
+    private void printMovieWithId(MovieDTO movieDTO) {
         System.out.print("\nMovie ID: ");
-        System.out.print(movie.getId());
-        printMovie(movie);
+        System.out.print(movieDTO.getId());
+        printMovie(movieDTO);
     }
 
-    private void printMovie(Movie movie) {
+    private void printMovie(MovieDTO movieDTO) {
         StringBuilder messageToPrint = new StringBuilder()
                 .append("\n\tMovie title: ")
-                .append(movie.getTitle())
+                .append(movieDTO.getTitle())
                 .append("\n\tMovie released: ")
-                .append(movie.getReleased())
+                .append(movieDTO.getReleased())
                 .append("\n\tMovie genre: ")
-                .append(movie.getGenre())
+                .append(movieDTO.getGenre())
                 .append("\n\tMovie plot: ")
-                .append(movie.getPlot())
+                .append(movieDTO.getPlot())
                 .append("\n\tMovie IMDB Rating: ")
-                .append(movie.getImdbRating());
+                .append(movieDTO.getImdbRating());
         System.out.println(messageToPrint.toString());
     }
 

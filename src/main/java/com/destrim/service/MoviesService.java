@@ -4,6 +4,7 @@ import com.destrim.exception.BadApikeyException;
 import com.destrim.exception.MovieInOmdbNotFound;
 import com.destrim.exception.OmdbConnectionProblem;
 import com.destrim.model.Movie;
+import com.destrim.model.MovieDTO;
 import com.destrim.persistance.MovieRepository;
 import com.destrim.util.FileHandling;
 
@@ -26,11 +27,12 @@ public class MoviesService {
         return movieRepository.getAll();
     }
 
-    public void addMovie(Movie movie) {
+    public void addMovie(MovieDTO movieDTO) {
+        Movie movie = new Movie(movieDTO.getTitle(), movieDTO.getReleased(), movieDTO.getGenre(), movieDTO.getPlot(), movieDTO.getImdbRating());
         movieRepository.add(movie);
     }
 
-    public Movie fetchMovieData(String title, String year) throws MovieInOmdbNotFound, OmdbConnectionProblem {
+    public MovieDTO fetchMovieData(String title, String year) throws MovieInOmdbNotFound, OmdbConnectionProblem {
         return omdbWebServiceClient.searchMovieByTitleYear(title, year);
     }
 
