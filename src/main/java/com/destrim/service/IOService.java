@@ -27,18 +27,18 @@ public class IOService {
         return askIfUserAccepts();
     }
 
-    public boolean askIfMovieToDeleteIsCorrect(Movie movie) {
+    public boolean askIfMovieToDeleteIsCorrect(MovieDTO movieDTO) {
         System.out.println("\nAre you sure you want to delete movie:");
-        printMovie(movie);
+        printMovie(movieDTO);
         System.out.println("\nfrom your database?\n");
 
         return askIfUserAccepts();
     }
 
-    public void printMovies(List<Movie> movies) {
+    public void printMovies(List<MovieDTO> moviesDTO) {
         System.out.println("\n~~~~~~~~~~~~~~~~~~~ Your Movie Database ~~~~~~~~~~~~~~~~~~~");
-        for (Movie movie : movies) {
-            printMovieWithId(movie);
+        for (MovieDTO movieDTO : moviesDTO) {
+            printMovieWithId(movieDTO);
         }
     }
 
@@ -61,7 +61,7 @@ public class IOService {
     public String readInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Write your command: ");
+        System.out.println("\nWrite your command: ");
         return scanner.nextLine();
     }
 
@@ -89,7 +89,7 @@ public class IOService {
     private boolean askIfUserAccepts() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("(y/n): ");
+        System.out.println("(y/n): ");
         char choice = Character.toLowerCase(scanner.next().charAt(0));
         return choice == 'y';
     }

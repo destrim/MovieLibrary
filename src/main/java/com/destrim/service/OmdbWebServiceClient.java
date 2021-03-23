@@ -19,6 +19,7 @@ public class OmdbWebServiceClient {
 
     private static final String SEARCH_URL = "http://www.omdbapi.com/?apikey=APIKEY&type=movie&t=TITLE&y=YEAR";
     private final String apikey;
+    private final ParseJSON parseJSON = new ParseJSON();
 
     public OmdbWebServiceClient() throws BadApikeyException {
         this.apikey = FileHandling.importApikey().orElseThrow(BadApikeyException::new);
@@ -34,10 +35,10 @@ public class OmdbWebServiceClient {
                 .replaceAll("APIKEY", apikey);
 
         String response = sendGetRequest(requestUrl);
-        if (!ParseJSON.isResponseCorrect(response)) {
+        if (!parseJSON.isResponseCorrect(response)) {
             throw new MovieInOmdbNotFound();
         }
-        return ParseJSON.parse(response);
+        return parseJSON.parse(response);
     }
 
     private String sendGetRequest(String requestUrl) throws OmdbConnectionProblem {

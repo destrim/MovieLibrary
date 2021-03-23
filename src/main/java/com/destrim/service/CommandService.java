@@ -65,17 +65,17 @@ public class CommandService {
     }
 
     private void handleShow() {
-        List<Movie> movies = moviesService.getMovies();
-        ioService.printMovies(movies);
+        List<MovieDTO> moviesDTO = moviesService.getMovies();
+        ioService.printMovies(moviesDTO);
     }
 
     private void handleDelete(String input) {
         DeleteCommand deleteCommand = DeleteCommand.fromInput(input);
-        Movie movie = moviesService.getMovie(deleteCommand.getId());
-        boolean userAccept = ioService.askIfMovieToDeleteIsCorrect(movie);
+        MovieDTO movieDTO = moviesService.getMovie(deleteCommand.getId());
+        boolean userAccept = ioService.askIfMovieToDeleteIsCorrect(movieDTO);
 
         if (userAccept) {
-            moviesService.deleteMovie(movie);
+            moviesService.deleteMovie(movieDTO.getId());
         }
     }
 

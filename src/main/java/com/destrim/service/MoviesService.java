@@ -7,9 +7,11 @@ import com.destrim.model.Movie;
 import com.destrim.model.MovieDTO;
 import com.destrim.persistance.MovieRepository;
 import com.destrim.util.FileHandling;
+import com.destrim.util.MovieMapper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MoviesService {
 
@@ -23,12 +25,15 @@ public class MoviesService {
         this.fileHandling = new FileHandling();
     }
 
-    public List<Movie> getMovies() {
-        return movieRepository.getAll();
+    public List<MovieDTO> getMovies() {
+        List<Movie> movies = movieRepository.getAll();
+        return movies.stream()
+                .map(MovieMapper::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     public void addMovie(MovieDTO movieDTO) {
-        Movie movie = new Movie(movieDTO.getTitle(), movieDTO.getReleased(), movieDTO.getGenre(), movieDTO.getPlot(), movieDTO.getImdbRating());
+        Movie movie = MovieMapper.mapFromDTO(movieDTO);
         movieRepository.add(movie);
     }
 
@@ -36,21 +41,30 @@ public class MoviesService {
         return omdbWebServiceClient.searchMovieByTitleYear(title, year);
     }
 
-    public void deleteMovie(Movie movie) {
-        movieRepository.delete(movie);
+    public void deleteMovie(long id) {
+        movieRepository.delete(id);
     }
 
-    public Movie getMovie(long id) {
-        return movieRepository.get(id);
+    public MovieDTO getMovie(long id) {
+        Movie movie = movieRepository.get(id);
+        return MovieMapper.mapToDTO(movie);
     }
 
     public void importMoviesFromJSON(String fileName) throws IOException {
-        List<Movie> movies = fileHandling.importFromFile(fileName);
+        List<MovieDTO> moviesDTO = fileHandling.importFromFile(fileName);
+        List<Movie> movies = moviesDTO.stream()
+                .map(MovieMapper::mapFromDTO)
+                .collect(Collectors.toList());
+
         movieRepository.addAll(movies);
     }
 
     public void exportMoviesToJSON(String fileName) throws IOException {
         List<Movie> movies = movieRepository.getAll();
-        fileHandling.exportToFile(movies, fileName);
+        List<MovieDTO> moviesDTO = movies.stream()
+                .map(MovieMapper::mapToDTO)
+                .collect(Collectors.toList());
+
+        fileHandling.exportToFile(moviesDTO, fileName);
     }
 }

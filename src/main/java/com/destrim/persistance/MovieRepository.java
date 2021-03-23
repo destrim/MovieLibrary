@@ -25,10 +25,11 @@ public class MovieRepository {
         session.close();
     }
 
-    public void delete(Movie movie) {
+    public void delete(long id) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
+        Movie movie = session.get(Movie.class, id);
         session.delete(movie);
 
         tx.commit();
@@ -36,12 +37,10 @@ public class MovieRepository {
     }
 
     public Movie get(long id) {
-        Movie movie;
-
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        movie = session.get(Movie.class, id);
+        Movie movie = session.get(Movie.class, id);
 
         tx.commit();
         session.close();

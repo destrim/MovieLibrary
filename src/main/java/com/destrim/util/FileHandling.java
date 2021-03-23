@@ -1,6 +1,7 @@
 package com.destrim.util;
 
 import com.destrim.model.Movie;
+import com.destrim.model.MovieDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -19,12 +20,12 @@ public class FileHandling {
     private static final String pathString = "src/main/resources/apikey";
     private static final String jsonFormat = ".json";
 
-    public void exportToFile(List<Movie> movies, String fileName) throws IOException {
-        String json = getJsonFromMovies(movies);
+    public void exportToFile(List<MovieDTO> moviesDTO, String fileName) throws IOException {
+        String json = getJsonFromMovies(moviesDTO);
         saveJsonToFile(fileName, json);
     }
 
-    public List<Movie> importFromFile(String fileName) throws IOException {
+    public List<MovieDTO> importFromFile(String fileName) throws IOException {
         String json = parseJsonFromFile(fileName);
         return getMoviesFromJson(json);
     }
@@ -39,9 +40,9 @@ public class FileHandling {
         }
     }
 
-    private String getJsonFromMovies(List<Movie> movies) {
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-        return gson.toJson(movies);
+    private String getJsonFromMovies(List<MovieDTO> moviesDTO) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(moviesDTO);
     }
 
     private void saveJsonToFile(String fileName, String json) throws FileNotFoundException {
@@ -56,10 +57,10 @@ public class FileHandling {
         return Files.readString(path);
     }
 
-    private List<Movie> getMoviesFromJson(String json) {
+    private List<MovieDTO> getMoviesFromJson(String json) {
         Gson gson = new Gson();
 
-        Type movieListType = new TypeToken<List<Movie>>() {
+        Type movieListType = new TypeToken<List<MovieDTO>>() {
         }.getType();
 
         return gson.fromJson(json, movieListType);

@@ -1,9 +1,9 @@
 package com.destrim.model;
 
-import com.google.gson.annotations.Expose;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,28 +14,16 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Expose
     private String title;
-    @Expose
     private String released;
-    @Expose
     private String genre;
-    @Expose
     private String plot;
-    @Expose
     private String imdbRating;
-
-    public Movie(String title, String released, String genre, String plot, String imdbRating) {
-        this.title = title;
-        this.released = released;
-        this.genre = genre;
-        this.plot = plot;
-        this.imdbRating = imdbRating;
-    }
 }
