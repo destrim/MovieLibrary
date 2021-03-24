@@ -1,9 +1,16 @@
 [
   {
-    "Title": "Gladiator",
-    "Year": "2000",
-    "Genre": "Action, Adventure, Drama",
-    "Plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "title": "Gladiator",
+    "year": "2000",
+    "genre": "Action, Adventure, Drama",
+    "plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "imdbRating": "8.5"
+  },
+  {
+    "title": "Gladiator",
+    "year": "2000",
+    "genre": "Action, Adventure, Drama",
+    "plot": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
     "imdbRating": "8.5"
   }
 ]
