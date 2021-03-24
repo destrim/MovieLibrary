@@ -9,7 +9,7 @@ public class MovieMapper {
         return  MovieDTO.builder()
                 .id(movie.getId())
                 .title(movie.getTitle())
-                .released(movie.getReleased())
+                .year(movie.getYear())
                 .genre(movie.getGenre())
                 .plot(movie.getPlot())
                 .imdbRating(movie.getImdbRating())
@@ -19,7 +19,7 @@ public class MovieMapper {
     public static Movie mapFromDTO(MovieDTO movieDTO) {
         return Movie.builder()
                 .title(movieDTO.getTitle())
-                .released(movieDTO.getReleased())
+                .year(movieDTO.getYear())
                 .genre(movieDTO.getGenre())
                 .plot(movieDTO.getPlot())
                 .imdbRating(movieDTO.getImdbRating())

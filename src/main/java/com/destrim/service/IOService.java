@@ -20,23 +20,30 @@ public class IOService {
             .toString();
 
     public boolean askIfMovieToAddIsCorrect(MovieDTO movieDTO) {
-        System.out.println("\nAre you sure you want to add movie:");
+        printNewLine();
+        System.out.println("Are you sure you want to add movie:");
         printMovie(movieDTO);
-        System.out.println("\nto your database?\n");
+        printNewLine();
+        System.out.println("to your database?");
+        printNewLine();
 
         return askIfUserAccepts();
     }
 
     public boolean askIfMovieToDeleteIsCorrect(MovieDTO movieDTO) {
-        System.out.println("\nAre you sure you want to delete movie:");
+        printNewLine();
+        System.out.println("Are you sure you want to delete movie:");
         printMovie(movieDTO);
-        System.out.println("\nfrom your database?\n");
+        printNewLine();
+        System.out.println("from your database?");
+        printNewLine();
 
         return askIfUserAccepts();
     }
 
     public void printMovies(List<MovieDTO> moviesDTO) {
-        System.out.println("\n~~~~~~~~~~~~~~~~~~~ Your Movie Database ~~~~~~~~~~~~~~~~~~~");
+        printNewLine();
+        System.out.println("~~~~~~~~~~~~~~~~~~~ Your Movie Database ~~~~~~~~~~~~~~~~~~~");
         for (MovieDTO movieDTO : moviesDTO) {
             printMovieWithId(movieDTO);
         }
@@ -61,12 +68,14 @@ public class IOService {
     public String readInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nWrite your command: ");
+        printNewLine();
+        System.out.println("Write your command: ");
         return scanner.nextLine();
     }
 
     private void printMovieWithId(MovieDTO movieDTO) {
-        System.out.print("\nMovie ID: ");
+        printNewLine();
+        System.out.print("Movie ID: ");
         System.out.print(movieDTO.getId());
         printMovie(movieDTO);
     }
@@ -75,8 +84,8 @@ public class IOService {
         StringBuilder messageToPrint = new StringBuilder()
                 .append("\n\tMovie title: ")
                 .append(movieDTO.getTitle())
-                .append("\n\tMovie released: ")
-                .append(movieDTO.getReleased())
+                .append("\n\tMovie year: ")
+                .append(movieDTO.getYear())
                 .append("\n\tMovie genre: ")
                 .append(movieDTO.getGenre())
                 .append("\n\tMovie plot: ")
@@ -92,5 +101,9 @@ public class IOService {
         System.out.println("(y/n): ");
         char choice = Character.toLowerCase(scanner.next().charAt(0));
         return choice == 'y';
+    }
+
+    private void printNewLine() {
+        System.out.println();
     }
 }

@@ -20,7 +20,7 @@ public class Movie {
     private long id;
 
     private String title;
-    private String released;
+    private String year;
     private String genre;
     private String plot;
     private String imdbRating;

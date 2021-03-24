@@ -1,5 +1,6 @@
 package com.destrim.model;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +10,15 @@ public class MovieDTO {
 
     private transient long id;
 
+    @SerializedName(value = "Title")
     private String title;
-    private String released;
+    @SerializedName(value = "Year")
+    private String year;
+    @SerializedName(value = "Genre")
     private String genre;
+    @SerializedName(value = "Plot")
     private String plot;
+    @SerializedName(value = "imdbRating")
     private String imdbRating;
 
     public static Builder builder() {
@@ -23,7 +29,7 @@ public class MovieDTO {
 
         private long id;
         private String title;
-        private String released;
+        private String year;
         private String genre;
         private String plot;
         private String imdbRating;
@@ -38,8 +44,8 @@ public class MovieDTO {
             return this;
         }
 
-        public Builder released(String released) {
-            this.released = released;
+        public Builder year(String year) {
+            this.year = year;
             return this;
         }
 
@@ -63,14 +69,14 @@ public class MovieDTO {
                 throw new IllegalArgumentException("Title cannot be empty");
             }
 
-            if (released.isEmpty()) {
-                throw new IllegalArgumentException("Released date cannot be empty");
+            if (year.isEmpty()) {
+                throw new IllegalArgumentException("Released year cannot be empty");
             }
 
             MovieDTO movieDTO = new MovieDTO();
             movieDTO.id = this.id;
             movieDTO.title = this.title;
-            movieDTO.released = this.released;
+            movieDTO.year = this.year;
             movieDTO.genre = this.genre;
             movieDTO.plot = this.plot;
             movieDTO.imdbRating = this.imdbRating;

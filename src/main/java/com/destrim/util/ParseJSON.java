@@ -1,6 +1,7 @@
 package com.destrim.util;
 
 import com.destrim.model.MovieDTO;
+import com.google.gson.Gson;
 import lombok.Data;
 import org.json.JSONObject;
 
@@ -8,14 +9,8 @@ import org.json.JSONObject;
 public class ParseJSON {
 
     public MovieDTO parse(String response) {
-        JSONObject obj = new JSONObject(response);
-        return MovieDTO.builder()
-                .title(obj.getString("Title"))
-                .released(obj.getString("Year"))
-                .genre(obj.getString("Genre"))
-                .plot(obj.getString("Plot"))
-                .imdbRating(obj.getString("imdbRating"))
-                .build();
+        Gson gson = new Gson();
+        return gson.fromJson(response, MovieDTO.class);
     }
 
     public boolean isResponseCorrect(String response) {
