@@ -1,6 +1,6 @@
 # Project exclude paths
 /out/
-/src/main/resources/apikey
+src/main/resources/apikey
 
 # Intellij
 .idea/

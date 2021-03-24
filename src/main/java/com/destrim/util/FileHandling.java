@@ -1,78 +1,68 @@
 package com.destrim.util;
 
 import com.destrim.model.Movie;
-import org.json.JSONObject;
+import com.destrim.model.MovieDTO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 public class FileHandling {
-    public static void exportToFile(List<Movie> movies, String fileName) throws IOException {
-        JSONObject obj = new JSONObject();
-        int i = 1;
-        for (Movie movie : movies) {
-            Map<String, String> m = new LinkedHashMap<>(5);
-            m.put("Title", movie.getTitle());
-            m.put("Released", movie.getReleased());
-            m.put("Genre", movie.getGenre());
-            m.put("Plot", movie.getPlot());
-            m.put("imdbRating", movie.getImdbRating());
 
-            obj.put("movieNo" + i, m);
-            i++;
-        }
+    private static final String pathString = "src/main/resources/apikey";
+    private static final String jsonFormat = ".json";
 
-        PrintWriter pw = new PrintWriter(fileName + ".json");
-        pw.write(obj.toString());  // TODO json formatting
-        pw.flush();
-        pw.close();
+    public void exportToFile(List<MovieDTO> moviesDTO, String fileName) throws IOException {
+        String json = getJsonFromMovies(moviesDTO);
+        saveJsonToFile(fileName, json);
     }
 
-    public static ArrayList<Movie> importFromFile(String fileName) throws IOException {
-        ArrayList<Movie> movies = new ArrayList<>();
-
-        Path path = Path.of(fileName + ".json");
-        String jsonFromFile = Files.readString(path);
-
-        String findStr = "movieNo";
-        int lastIndex = 0;
-        int count = 0;
-        while (lastIndex != -1) {
-            lastIndex = jsonFromFile.indexOf(findStr, lastIndex);
-            if (lastIndex != -1) {
-                count++;
-                lastIndex += findStr.length();
-            }
-        }
-
-        for (int i = 1; i <= count; i++) {
-            JSONObject obj = new JSONObject(jsonFromFile);
-            String countMovies = Integer.toString(i);
-            obj = obj.getJSONObject(findStr + countMovies);
-
-            Movie movie = new Movie(
-                    obj.getString("Title"),
-                    obj.getString("Released"),
-                    obj.getString("Genre"),
-                    obj.getString("Plot"),
-                    obj.getString("imdbRating")
-            );
-
-            movies.add(movie);
-        }
-        return movies;
+    public List<MovieDTO> importFromFile(String fileName) throws IOException {
+        String json = parseJsonFromFile(fileName);
+        return getMoviesFromJson(json);
     }
 
     public static Optional<String> importApikey() {
-        Path path = Path.of("src/main/resources/apikey");
+        Path path = Path.of(pathString);
 
         try {
             return Optional.of(Files.readString(path));
         } catch (IOException e) {
             return Optional.empty();
         }
+    }
+
+    private String getJsonFromMovies(List<MovieDTO> moviesDTO) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(moviesDTO);
+    }
+
+    private void saveJsonToFile(String fileName, String json) throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter(fileName + jsonFormat);
+        pw.write(json);
+        pw.flush();
+        pw.close();
+    }
+
+    private String parseJsonFromFile(String fileName) throws IOException {
+        Path path = Path.of(fileName + jsonFormat);
+        return Files.readString(path);
+    }
+
+    private List<MovieDTO> getMoviesFromJson(String json) {
+        Gson gson = new Gson();
+
+        Type movieListType = new TypeToken<List<MovieDTO>>() {
+        }.getType();
+
+        return gson.fromJson(json, movieListType);
     }
 }
