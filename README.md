@@ -1,4 +1,4 @@
-# MoviesLibrary
+# Movie Library
 
 Movie Library in Java for managing your watched movies.
 
