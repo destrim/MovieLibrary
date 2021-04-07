@@ -6,7 +6,7 @@ import com.destrim.model.MovieDTO;
 public class MovieMapper {
 
     public static MovieDTO mapToDTO(Movie movie) {
-        return  MovieDTO.builder()
+        return MovieDTO.builder()
                 .id(movie.getId())
                 .title(movie.getTitle())
                 .year(movie.getYear())

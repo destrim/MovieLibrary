@@ -3,7 +3,6 @@ package com.destrim.service;
 import com.destrim.exception.BadApikeyException;
 import com.destrim.exception.MovieInOmdbNotFound;
 import com.destrim.exception.OmdbConnectionProblem;
-import com.destrim.model.Movie;
 import com.destrim.model.MovieDTO;
 import com.destrim.model.command.AddCommand;
 import com.destrim.model.command.DeleteCommand;

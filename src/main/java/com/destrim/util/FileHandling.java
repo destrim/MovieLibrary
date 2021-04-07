@@ -1,6 +1,5 @@
 package com.destrim.util;
 
-import com.destrim.model.Movie;
 import com.destrim.model.MovieDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

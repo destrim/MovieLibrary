@@ -1,6 +1,5 @@
 package com.destrim.service;
 
-import com.destrim.model.Movie;
 import com.destrim.model.MovieDTO;
 
 import java.util.List;
