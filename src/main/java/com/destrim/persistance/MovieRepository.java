@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRepository {
@@ -54,8 +55,23 @@ public class MovieRepository {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
-        // TODO fix warning
-        movies = session.createQuery("from Movie").list();
+        String hql = "from Movie";
+        movies = session.createQuery(hql).list();
+
+        tx.commit();
+        session.close();
+
+        return movies;
+    }
+
+    public List<Movie> getAllSortedBy(String sortBy) {
+        List<Movie> movies;
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        String hql = "from Movie order by " + sortBy;
+        movies = session.createQuery(hql).list();
 
         tx.commit();
         session.close();

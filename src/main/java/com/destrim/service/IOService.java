@@ -10,10 +10,10 @@ public class IOService {
 
     private final String userCommandGuide = new StringBuilder()
             .append("\nAvailable commands:\n")
-            .append("\tshow = Show your movie database.\n")
+            .append("\tshow -b t/y/r = Show your list sorted by title t, released year y or IMDB rating r. " +
+                    "Argument is optional.\n")
             .append("\tadd -t \"title\" -y year = Add new movie with title and released year to your list.\n")
             .append("\tdelete -i index = Delete movie with index from your list.\n")
-            .append("\tsort -p t/y/r = Sort your list by title t, released year y or IMDB rating r.\n")
             .append("\texport -f filename = Save your movies to JSON file.\n")
             .append("\timport -f filename = Import your list from JSON file.\n")
             .append("\tquit = Quit program.\n")
@@ -68,7 +68,6 @@ public class IOService {
     public String readInput() {
         Scanner scanner = new Scanner(System.in);
 
-        printNewLine();
         System.out.println("Write your command: ");
         return scanner.nextLine();
     }

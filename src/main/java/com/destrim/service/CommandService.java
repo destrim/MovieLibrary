@@ -8,6 +8,7 @@ import com.destrim.model.MovieDTO;
 import com.destrim.model.command.AddCommand;
 import com.destrim.model.command.DeleteCommand;
 import com.destrim.model.command.FileCommand;
+import com.destrim.model.command.ShowCommand;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +26,9 @@ public class CommandService {
     public void start() {
         boolean isWorking = true;
 
-        ioService.printUserCommandGuide();
-
         while (isWorking) {
+            ioService.printUserCommandGuide();
+
             String input = ioService.readInput();
             isWorking = handleCommand(input);
         }
@@ -38,7 +39,7 @@ public class CommandService {
 
         switch (command) {
             case "add" -> handleAdd(input);
-            case "show" -> handleShow();
+            case "show" -> handleShow(input);
             case "delete" -> handleDelete(input);
             case "import" -> handleImport(input);
             case "export" -> handleExport(input);
@@ -64,8 +65,16 @@ public class CommandService {
         }
     }
 
-    private void handleShow() {
-        List<MovieDTO> moviesDTO = moviesService.getMovies();
+    private void handleShow(String input) {
+        ShowCommand showCommand = ShowCommand.fromInput(input);
+        List<MovieDTO> moviesDTO;
+
+        if (showCommand.getSortBy().isEmpty()) {
+            moviesDTO = moviesService.getMovies();
+        } else {
+            moviesDTO = moviesService.getMoviesSortedBy(showCommand.getSortBy());
+        }
+
         ioService.printMovies(moviesDTO);
     }
 

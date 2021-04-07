@@ -32,6 +32,13 @@ public class MoviesService {
                 .collect(Collectors.toList());
     }
 
+    public List<MovieDTO> getMoviesSortedBy(String sortBy) {
+        List<Movie> movies = movieRepository.getAllSortedBy(sortBy);
+        return movies.stream()
+                .map(MovieMapper::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
     public void addMovie(MovieDTO movieDTO) {
         Movie movie = MovieMapper.mapFromDTO(movieDTO);
         movieRepository.add(movie);
