@@ -19,6 +19,11 @@ Moreover, database can be exported as a json file, which also can be imported in
 
 App connects to local MySQL database via Hibernate and fetches added movie data from OMDb API. Classes use Lombok for automatic generation of getters, setters and constructors, which help in keeping the code clean. Gson is used for effortless mapping objects to json. Project is managed by Maven library.
 
+### Demo
+<p align="center">
+<img src="demo.gif"/>
+</p>
+
 ### Summary
 
 Project was made as a self-learning exercise. It helped me become familiar with Maven, Hibernate and some design patterns.
