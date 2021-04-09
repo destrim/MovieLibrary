@@ -27,7 +27,6 @@ public class OmdbWebServiceClient {
         this.apikey = FileHandling.importApikey().orElseThrow(BadApikeyException::new);
     }
 
-    // TODO Optional instead of MovieInOmdbNotFound Exception
     public MovieDTO searchMovieByTitleYear(String title, String year) throws MovieInOmdbNotFound, OmdbConnectionProblem {
         title = URLEncoder.encode(title, StandardCharsets.UTF_8);
 
