@@ -21,7 +21,7 @@ App connects to local MySQL database via Hibernate and fetches added movie data 
 
 ### Summary
 
-Project was made as a self-learning exercise. It helped me become familiar with maven, hibernate and some design patterns.
+Project was made as a self-learning exercise. It helped me become familiar with Maven, Hibernate and some design patterns.
 
 #### Tasks list
 
