@@ -1,4 +1,12 @@
 # Movie Library
+[![](https://img.shields.io/badge/Intellij_IDEA-2020.2-brown)]()
+[![](https://img.shields.io/badge/Java-14.0.2-white)]()
+[![](https://img.shields.io/badge/Maven-4.0.0-black)](https://maven.apache.org/)
+[![](https://img.shields.io/badge/Hibernate-5.4.27-green)](https://mvnrepository.com/artifact/org.hibernate/hibernate-core/5.4.27.Final)
+[![](https://img.shields.io/badge/lombok-1.18.12-yellow)](https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.12)
+[![](https://img.shields.io/badge/mysql-8.0.22-blue)](https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.22)
+[![](https://img.shields.io/badge/gson-2.8.6-red)](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6)
+[![](https://img.shields.io/badge/org.json-20200518-orange)](https://mvnrepository.com/artifact/org.json/json/20200518)
 
 ### Introduction
 
@@ -13,11 +21,6 @@ It is written in _Java_ programming language and made in _IntelliJ IDEA_ IDE.
 The movie database, where are sent requestes for movie to add, is available by connection with the _OMDb API_ via _java.net_ package.
 Hibernate for mapping model to a local database.
 Maven for building and managing project.
-
-- Java 14.0.2
-- Maven 4.0.0
-- Hibernate 5.4.27.Final
-- 
 
 ### Summary
 
