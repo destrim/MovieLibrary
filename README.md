@@ -28,7 +28,7 @@ App connects to local MySQL database via Hibernate and fetches added movie data 
 
 Project was made as a self-learning exercise. It helped me become familiar with Maven, Hibernate and some design patterns.
 
-#### Tasks list
+## Tasks list
 
 - [x] add database to the project instead of JSON file
 - [x] change all functionalities from using JSON file to operating on database
