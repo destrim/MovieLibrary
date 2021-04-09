@@ -1,10 +1,10 @@
 # Movie Library
-[![](https://img.shields.io/badge/Intellij_IDEA-2020.2-brown)]()
-[![](https://img.shields.io/badge/Java-14.0.2-white)]()
-[![](https://img.shields.io/badge/Maven-4.0.0-black)](https://maven.apache.org/)
+
+[![](https://img.shields.io/badge/Java-14.0.2-lightgray)]()
+[![](https://img.shields.io/badge/Maven-4.0.0-brown)](https://maven.apache.org/)
 [![](https://img.shields.io/badge/Hibernate-5.4.27-green)](https://mvnrepository.com/artifact/org.hibernate/hibernate-core/5.4.27.Final)
 [![](https://img.shields.io/badge/lombok-1.18.12-yellow)](https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.12)
-[![](https://img.shields.io/badge/mysql-8.0.22-blue)](https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.22)
+[![](https://img.shields.io/badge/MySQL-8.0.22-blue)](https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.22)
 [![](https://img.shields.io/badge/gson-2.8.6-red)](https://mvnrepository.com/artifact/com.google.code.gson/gson/2.8.6)
 [![](https://img.shields.io/badge/org.json-20200518-orange)](https://mvnrepository.com/artifact/org.json/json/20200518)
 
@@ -17,14 +17,11 @@ Moreover, database can be exported as a json file, which also can be imported in
 
 ### Technologies
 
-It is written in _Java_ programming language and made in _IntelliJ IDEA_ IDE.
-The movie database, where are sent requestes for movie to add, is available by connection with the _OMDb API_ via _java.net_ package.
-Hibernate for mapping model to a local database.
-Maven for building and managing project.
+App connects to local MySQL database via Hibernate and fetches added movie data from OMDb API. Classes use Lombok for automatic generation of getters, setters and constructors, which help in keeping the code clean. Gson is used for effortless mapping objects to json. Project is managed by Maven library.
 
 ### Summary
 
-Project was made as a self-learning exercise. It helped me become familiar with hibernate, maven and some design patterns.
+Project was made as a self-learning exercise. It helped me become familiar with maven, hibernate and some design patterns.
 
 #### Tasks list
 
